@@ -27,7 +27,7 @@ What a difference a tag makes?
 
 Sign up on AdEntify and install this plugin so you can start adding key pieces of information (brands, products, places, affiliate links and people) directly to your images with discreet and customizable tags. AdEntify monetizes your visual content by providing you access to thousands of products, brands and over 10,000 merchant links. The best part is that it can be seamlessly integrated into your platform and it?s super easy to use.
 
-AdEntify?s business model is exclusively success-fee based. Our technology is free to install transactional and we only charge a 15 % commission on the revenue we generate through our tags.
+AdEntify's business model is exclusively success-fee based. Our technology is free to install transactional and we only charge a 15 % commission on the revenue we generate through our tags.
 
 Once you?ve signed up, you can check your AdEntify dashboard where we provide information about all the activity on your site, giving you insight into the behavior of your audience, tag performance and revenue.
 
@@ -48,6 +48,7 @@ For more information visit business.adentify.com or email us at contact@adentify
 
 1. Tag your photo with products, people or placs
 2. Plugin's settings
+2. Enjoy tags!
 
 == Changelog ==
 
