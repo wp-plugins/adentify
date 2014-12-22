@@ -1,0 +1,41 @@
+.ad-media-frame-content .photo-overlay {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.ad-media-frame-content .photo-overlay .tag {
+    position: absolute;
+}
+
+.select2-drop {
+    z-index: 999999!important;
+}
+.select2-drop .small-logo {
+    max-height: 20px;
+    max-width: 100%;
+}
+
+.select2-drop .row-fluid .span2 {
+    width: 20%;
+    float: left;
+    padding-right: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.select2-drop .row-fluid .span10 {
+    width: 80%;
+    float: left;
+}
+.select2-drop .row-fluid .providerName {
+    color: #333333;
+    font-size: 10px;
+    padding-left: 5px;
+}
+.clearfix {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}

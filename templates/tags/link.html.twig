@@ -1,0 +1,3 @@
+{% macro showLink(value, link) %}
+{% if link %}<a href="{{ link }}" rel="nofollow">{{ value }}</a>{% else %}{{ value }}{% endif %}
+{% endmacro %}
