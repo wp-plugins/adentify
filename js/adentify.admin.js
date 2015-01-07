@@ -41,6 +41,7 @@ var AdEntifyBO = {
             jQuery('#ad-uploader').show();
             break;
       }
+      return false;
    },
 
    clickOnTagTab: function(e) {
@@ -63,6 +64,7 @@ var AdEntifyBO = {
             jQuery('#tag-product input').first().focus();
             break;
       }
+      return false;
    },
 
    hideOpenedSelect2: function() {
@@ -92,6 +94,7 @@ var AdEntifyBO = {
              jQuery('#ad-uploader-content').show();
           }
       });
+      return false;
    },
 
    clickOnLibraryPhoto: function(e) {
@@ -103,6 +106,7 @@ var AdEntifyBO = {
       jQuery('#ad-insert-from-library, #ad-tag-from-library, #ad-delete-photo').removeAttr('disabled');
       this.photoIdSelected = this.currentSelectedPhoto.attr('data-adentify-photo-id');
       this.wpPhotoIdSelected = this.currentSelectedPhoto.attr('data-wp-photo-id');
+      return false;
    },
 
    clickOnDeletePhoto: function(e) {
@@ -127,6 +131,7 @@ var AdEntifyBO = {
             }
          });
       }
+      return false;
    },
 
    /*
@@ -229,6 +234,7 @@ var AdEntifyBO = {
       this.resetForms();
       this.removeTempTagsFromDOM(jQuery('.photo-overlay'));
       this.removeTagsFromDOM(jQuery('.photo-overlay'));
+      return false;
    },
 
    backToMainModal: function() {
@@ -239,6 +245,7 @@ var AdEntifyBO = {
       this.resetForms();
       this.removeTempTagsFromDOM(jQuery('.photo-overlay'));
       this.removeTagsFromDOM(jQuery('.photo-overlay'));
+      return false;
    },
 
    startLoading: function(loader, tagId) {
@@ -738,6 +745,7 @@ var AdEntifyBO = {
          else
             console.log("you have to select a photo"); // TODO: gestion erreur
       }
+      return false;
    },
 
    createCORSRequest: function(method, url) {
@@ -799,6 +807,7 @@ var AdEntifyBO = {
       if (adentifyButton.length) {
          adentifyButton.click(function() {
             that.clickOnAdEntifyButton();
+            return false;
          });
       }
 

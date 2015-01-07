@@ -8,6 +8,7 @@ class Twig
         $twig = new Twig_Environment($loader, array(
             'cache' => WP_DEBUG ? false : ADENTIFY__PLUGIN_DIR . 'cache/templates',
         ));
+        $twig->addExtension(new Twig_Extensions_Extension_I18n());
         if ($function) {
             $twig->addFunction(new Twig_SimpleFunction('wp_nonce_image_upload', $function));
         }

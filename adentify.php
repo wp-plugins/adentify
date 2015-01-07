@@ -50,7 +50,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.0');
+define( 'PLUGIN_VERSION', '1.0.1');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -63,6 +63,16 @@ require_once( ADENTIFY__PLUGIN_DIR . 'public/Twig.php' );
 if (!APIManager::getInstance()->isAccesTokenValid()) {
     APIManager::getInstance()->revokeAccessToken();
 }
+
+putenv('LC_ALL='.get_locale());
+setlocale(LC_ALL, get_locale());
+
+// Specify location of translation tables
+bindtextdomain("adentify", ADENTIFY__PLUGIN_DIR."languages");
+bind_textdomain_codeset('adentify', 'UTF-8');
+
+// Choose domain
+textdomain("adentify");
 
 /**
  * Add a icon to the beginning of every post page.

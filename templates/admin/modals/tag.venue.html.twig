@@ -4,14 +4,14 @@
             <input class="form-control" id="venue-name" name="name" type="text">
         </div>
         <div class="form-group">
-            <input class="form-control" id="venue-description" name="description" type="text" placeholder="Venue description">
+            <input class="form-control" id="venue-description" name="description" type="text" placeholder="{% trans 'tag.description' %}">
         </div>
         <div class="form-group">
-            <input class="form-control" id="venue-url" name="url" type="text" placeholder="Venue url">
+            <input class="form-control" id="venue-url" name="url" type="text" placeholder="{% trans 'tag.url' %}">
         </div>
         <p class="submit-tag">
-            <button id="submit-tag-venue" type="submit">Confirm and add tag</button>
-            <button id="cancel-tag-venue">Cancel</button>
+            <button id="submit-tag-venue" type="submit">{% trans 'tag.confirm' %}</button>
+            <button id="cancel-tag-venue">{% trans 'tag.cancel' %}</button>
         </p>
         <div id="ad-posting-tag-venue" class="loading-gif-container" style="display: none">
             <div class="loader rotate">

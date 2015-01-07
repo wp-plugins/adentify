@@ -5,14 +5,14 @@
 
         <table class="form-table">
             <tr>
-                <th scope="row">Show photos on AdEntify</th>
+                <th scope="row">{% trans 'settings.photo.show' %}</th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span>Show photos on AdEntify</span>
+                            <span>{% trans 'settings.photo.show' %}</span>
                         </legend>
                         <label for="photoIsPrivate">
-                            <input name="photoIsPrivate" type="checkbox" id="photoIsPrivate" {% if(photoIsPrivateVal) %} checked {% endif %}/> Display the photos uploaded here on AdEntify
+                            <input name="photoIsPrivate" type="checkbox" id="photoIsPrivate" {% if(photoIsPrivateVal) %} checked {% endif %}/>{% trans 'settings.photo.show.label' %}
                         </label>
                     </fieldset>
                 </td>
@@ -31,27 +31,27 @@
                 </td>
             </tr>#}
             <tr>
-                <th scope="row">Tags visibility</th>
+                <th scope="row">{% trans 'tags.visibility' %}</th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span>Display tags mode</span>
+                            <span>{% trans 'tags.visibility' %}</span>
                         </legend>
                         <label for="always-visible">
-                            <input type="radio" name="tagsVisibility" id="always-visible" value="always-visible" {{ (tagsVisibilityVal == 'always-visible') ? 'checked' : null }}> Tags always visible &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="tagsVisibility" id="always-visible" value="always-visible" {{ (tagsVisibilityVal == 'always-visible') ? 'checked' : null }}>{% trans 'tags.visibility.always' %} &nbsp;&nbsp;&nbsp;&nbsp;
                         </label>
                         <label for="visible-on-hover">
-                            <input type="radio" name="tagsVisibility" id="visible-on-hover" value="visible-on-hover" {{ (tagsVisibilityVal == 'visible-on-hover') ? 'checked' : null }}> Tags only visible on hover<br>
+                            <input type="radio" name="tagsVisibility" id="visible-on-hover" value="visible-on-hover" {{ (tagsVisibilityVal == 'visible-on-hover') ? 'checked' : null }}>{% trans 'tags.visibility.hover' %}<br>
                         </label>
                     </fieldset>
                 </td>
             </tr>
             <tr class="tagShape">
-                <th scope="row">Tags shape</th>
+                <th scope="row">{% trans 'tags.shape' %}</th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span>Choose your tags shape</span>
+                            <span>{% trans 'tags.shape' %}</span>
                         </legend>
                         <label for="tagShape1">
                             <input type="radio" name="tagShape" id="tagShape1" value="tagShape1" {{ (tagShapeVal == 'tagShape1') ? 'checked' : null }}>
@@ -92,20 +92,20 @@
                 </td>
             </tr>
             <tr>
-                <th scope="row">Google maps API key</th>
+                <th scope="row">{% trans 'google.map' %}</th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span>Google maps API key</span>
+                            <span>{% trans 'google.map' %}</span>
                         </legend>
                         <label for="googleMapsKey">
-                            <input name="googleMapsKey" type="text" id="googleMapsKey" value="{% if(googleMapsKeyVal) %}{{ googleMapsKeyVal }}{% endif %}"/> Enter your google maps API key
+                            <input name="googleMapsKey" type="text" id="googleMapsKey" value="{% if(googleMapsKeyVal) %}{{ googleMapsKeyVal }}{% endif %}"/>{% trans 'google.map.label' %}
                         </label>
                     </fieldset>
                 </td>
             </tr>
             <tr>
-                <th scope="row">Products Providers</th>
+                <th scope="row">{% trans 'product.providers' %}</th>
                 <td>
                     <label for="product-providers">
                         <select multiple="multiple" name="productsProviders[]" id="product-providers">
@@ -117,23 +117,25 @@
                                         value={{ productProvider }}>{{ productProvider }}</option>
                             {% endfor %}
                         </select>
-                        Choose your products providers
+                        {% trans 'product.providers.label' %}
                     </label>
                 </td>
             </tr>
             <tr>
-                <th scope="row">Products providers API key</th>
+                <th scope="row">{% trans 'product.providers.api.key' %}</th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span>Products providers API key</span>
+                            <span>{% trans 'product.providers.api.key' %}</span>
                         </legend>
                         {% for productProvider in providers_list %}
                             {% if(productProvider != 'adentify') %}
                                 <label for="{{ productProvider }}ProviderKey">
                                     <input name="{{ productProvider }}ProviderKey" type="text" id="{{ productProvider }}ProviderKey"
                                         value="{% if(productProvidersKey[productProvider ~ 'ProviderKeyVal']) %}{{ productProvidersKey[productProvider ~ 'ProviderKeyVal'] }}{% endif %}"/>
-                                    {{ productProvider|capitalize }} key (optional)
+                                    {% set productProvider = productProvider|capitalize %}
+                                    {% trans %}{{ productProvider }} key (optional){% endtrans %}
+                                    {#{{ productProvider|capitalize }} key (optional)#}
                                 </label>
                                 <br>
                             {% endif %}
@@ -144,10 +146,10 @@
             </tr>
         </table>
         <p class="submit">
-            <input type="submit" name="submit" id="submit" class="button button-primary" value="Save the modifications"  />
+            <input type="submit" name="submit" id="submit" class="button button-primary" value="{% trans 'settings.save' %}"  />
         </p>
 
-        <h2>Analytics</h2>
-        <p><a href="http://adentify.com/en/app/my/dashboard/analytics" target="_blank" class="button button-primary">View my analytics on AdEntify.com</a></p>
+        <h2>{% trans 'analytics'%}</h2>
+        <p><a href="http://adentify.com/en/app/my/dashboard/analytics" target="_blank" class="button button-primary">{% trans "analytics.msg" %}</a></p>
     </form>
 </div>

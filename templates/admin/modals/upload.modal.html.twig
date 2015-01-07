@@ -4,18 +4,18 @@
             <a id="adentify-modal-close" class="media-modal-close" href="#"><span class="media-modal-icon"><span class="screen-reader-text">Fermer le panneau des médias</span></span></a>
             <div id="ad-upload-modal" class="media-modal-content">
                 <div class="media-frame mode-select wp-core-ui" id="__wp-uploader-id-0">
-                    <div class="ad-media-frame-title"><h1>Insérer un média</h1></div>
+                    <div class="ad-media-frame-title"><h1>{% trans 'add.new.media' %}</h1></div>
                     <div class="ad-media-frame-router">
                         <div class="media-router">
-                            <a id="upload-file" href="#" class="media-menu-item active">Envoyer des fichiers</a>
-                            <a id="file-library" href="#" class="media-menu-item">Bibliothèque de médias</a>
+                            <a id="upload-file" href="#" class="media-menu-item active">{% trans 'upload.files'%}</a>
+                            <a id="file-library" href="#" class="media-menu-item">{% trans 'media.library' %}</a>
                         </div>
                     </div>
                     <div class="ad-media-frame-content">
                         <div id="ad-uploader" class="uploader-inline">
                             <div class="uploader-inline-content no-upload-message">
                                 <div id="ad-uploading-message" class="loading-gif-container" style="display: none;">
-                                    <h3 class="upload-instructions drop-instructions">Uploading</h3>
+                                    <h3 class="upload-instructions drop-instructions">{% trans 'uploading' %}</h3>
                                     <div class="loader rotate">
                                         <div class="loading-gif"></div>
                                     </div>
@@ -24,10 +24,8 @@
                                     <div class="upload-ui">
                                         <form role="form" enctype="multipart/form-data">
                                             <input id="upload-img" type="file" accept="image/jpeg, image/jpg, image/png" name="ad-upload-img" style="display: none"/>
-{#                                            <h3 class="upload-instructions drop-instructions">Déposez vos fichiers n’importe où pour les mettre en ligne</h3>
-                                            <p class="upload-instructions drop-instructions">ou</p>#}
                                             <a href="#" class="browser button button-hero" style="display: inline; position: relative; z-index: 1;" id="adentify-uploader-button">
-                                                Sélectionner des fichiers
+                                                {% trans 'select.file' %}
                                             </a>
                                         </form>
                                     </div>
@@ -48,7 +46,8 @@
                                         </div>
                                     </div>
                                     <div class="post-upload-ui">
-                                        <p class="max-upload-size">Taille de fichier maximale pour la mise en ligne&nbsp;: {{ max_upload_size }} MB.</p>
+                                        <p class="max-upload-size">{% trans 'max.upload.size' %}{{ max_upload_size }} MB.</p>
+                                        <p>{% trans 'supported.type' %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,9 +85,9 @@
                                         <div id="ad-tag-from-library-loading" class="loading-gif"></div>
                                     </div>
                                 </div>
-                                <div id="ad-tag-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">Ajouter un tag</div>
-                                <div id="ad-insert-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">Insérer dans l’article</div>
-                                <div id="ad-delete-photo" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">Supprimer la photo</div>
+                                <div id="ad-tag-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'add.tag' %}</div>
+                                <div id="ad-insert-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'photo.insert' %}</div>
+                                <div id="ad-delete-photo" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'photo.delete' %}</div>
                             </div>
                         </div>
                     </div>

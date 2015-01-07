@@ -7,14 +7,14 @@
             <input class="form-control" id="brand-name" name="brand" type="text">
         </div>
         <div class="form-group">
-            <input class="form-control" id="product-url" name="url" type="text" placeholder="Product url">
+            <input class="form-control" id="product-url" name="url" type="text" placeholder="{% trans 'tag.url' %}">
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="product-description" placeholder="Product description" name="description"></textarea>
+            <textarea class="form-control" id="product-description" placeholder="{% trans 'tag.description' %}" name="description"></textarea>
         </div>
         <p class="submit-tag">
-            <button id="submit-tag-product" type="submit">Confirm and add tag</button>
-            <button id="cancel-tag-product">Cancel</button>
+            <button id="submit-tag-product" type="submit">{% trans 'tag.confirm' %}</button>
+            <button id="cancel-tag-product">{% trans 'tag.cancel' %}</button>
         </p>
         <div id="ad-posting-tag-product" class="loading-gif-container" style="display: none">
             <div class="loader rotate">
