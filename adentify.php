@@ -71,6 +71,8 @@ setlocale(LC_ALL, get_locale());
 bindtextdomain("adentify", ADENTIFY__PLUGIN_DIR."languages");
 bind_textdomain_codeset('adentify', 'UTF-8');
 
+load_plugin_textdomain('adentify', ADENTIFY__PLUGIN_DIR, 'languages');
+
 // Choose domain
 textdomain("adentify");
 

@@ -123,27 +123,27 @@
     },
     {
         "name": "twig/twig",
-        "version": "v1.16.2",
-        "version_normalized": "1.16.2.0",
+        "version": "v1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/fabpot/Twig.git",
-            "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc"
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig/zipball/42f758d9fe2146d1f0470604fc05ee43580873fc",
-            "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
+            "reference": "2493970fa4d587eca73f77e6d8bd48a8bdd4c608",
             "shasum": ""
         },
         "require": {
             "php": ">=5.2.4"
         },
-        "time": "2014-10-17 12:53:44",
+        "time": "2015-01-14 10:15:49",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.16-dev"
+                "dev-master": "1.17-dev"
             }
         },
         "installation-source": "dist",
@@ -170,7 +170,7 @@
             },
             {
                 "name": "Twig Team",
-                "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                "homepage": "http://twig.sensiolabs.org/contributors",
                 "role": "Contributors"
             }
         ],
@@ -178,6 +178,60 @@
         "homepage": "http://twig.sensiolabs.org",
         "keywords": [
             "templating"
+        ]
+    },
+    {
+        "name": "twig/extensions",
+        "version": "v1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/Twig-extensions.git",
+            "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
+            "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
+            "shasum": ""
+        },
+        "require": {
+            "twig/twig": "~1.12"
+        },
+        "require-dev": {
+            "symfony/translation": "~2.3"
+        },
+        "suggest": {
+            "symfony/translation": "Allow the time_diff output to be translated"
+        },
+        "time": "2014-10-30 14:30:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_Extensions_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Common additional features for Twig that do not directly belong in core",
+        "homepage": "http://twig.sensiolabs.org/doc/extensions/index.html",
+        "keywords": [
+            "i18n",
+            "text"
         ]
     }
 ]

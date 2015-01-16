@@ -6,6 +6,8 @@
 }
 .ad-media-frame-content .photo-overlay .tag {
     position: absolute;
+    width: 30px;
+    height: 30px;
 }
 
 .select2-drop {
