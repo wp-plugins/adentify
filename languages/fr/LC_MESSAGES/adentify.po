@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+
+"Project-Id-Version: adentify\n"
+"POT-Creation-Date: 2013-11-03 10:20+0200\n"
+"PO-Revision-Date: 2013-11-03 10:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "add.new.media"
+msgstr "Insérer un média"
+
+msgid "upload.files"
+msgstr "Envoyer des fichiers"
+
+msgid "media.library"
+msgstr "Bibliothèque de médias"
+
+msgid "uploading"
+msgstr "En cours de téléchargement"
+
+msgid "select.file"
+msgstr "Choisissez un fichier"
+
+msgid "max.upload.size"
+msgstr "Taille limite de téléchargement: "
+
+msgid "supported.type"
+msgstr "Formats supportés: jpg, jpeg, png."
+
+msgid "add.tag"
+msgstr "Ajouter un tag"
+
+msgid "photo.insert"
+msgstr "Insérer dans l’article"
+
+msgid "photo.delete"
+msgstr "Supprimer la photo"
+
+msgid "photo.tag"
+msgstr "Ajouter un tag"
+
+msgid "tag.product"
+msgstr "Produit"
+
+msgid "tag.venue"
+msgstr "Lieu"
+
+msgid "tag.person"
+msgstr "Personne"
+
+msgid "button.back"
+msgstr "Précédent"
+
+msgid "button.done"
+msgstr "Terminer"
+
+msgid "tag.confirm"
+msgstr "Confirmer et ajouter le tag"
+
+msgid "tag.cancel"
+msgstr "Annuler"
+
+msgid "tag.description"
+msgstr "Description"
+
+msgid "tag.url"
+msgstr "Url"
+
+msgid "settings.photo.show"
+msgstr "Afficher les photos sur AdEntify"
+
+msgid "settings.photo.show.label"
+msgstr "Afficher les photos téléchargées ici sur AdEntify"
+
+msgid "tags.visibility"
+msgstr "Visibilité des tags"
+
+msgid "tags.visibility.always"
+msgstr "Tags toujours visible"
+
+msgid "tags.visibility.hover"
+msgstr "Tags visibles seulement en survol"
+
+msgid "tags.shape"
+msgstr "Forme des tags"
+
+msgid "google.map"
+msgstr "Clé de l'API de Google map"
+
+msgid "google.map.label"
+msgstr "Entrer votre clé de l'API de google map"
+
+msgid "product.providers"
+msgstr "Fournisseurs de produits"
+
+msgid "product.providers.label"
+msgstr "Choisissez vos fournisseurs de produits"
+
+msgid "product.providers.api.key"
+msgstr "Clés de l'API des fournisseurs"
+
+msgid "%productProvider% key (optional)"
+msgstr "Clé de %productProvider% (optionnelle)"
+
+msgid "settings.save"
+msgstr "Sauvegarder les modifications"
+
+msgid "analytics"
+msgstr "Analytics"
+
+msgid "analytics.msg"
+msgstr "Regarder mes analytics sur AdEntify.com"
+
+msgid "notices"
+msgstr "Vous devez lier votre compte AdEntify au plugin avant de pouvoir l'utiliser, connectez vous sur adentify.com et allez vers cette "
+
+msgid "notices2"
+msgstr "url pour autoriser le Plugin Wordpress"
