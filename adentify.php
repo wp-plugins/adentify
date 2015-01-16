@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
