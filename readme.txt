@@ -4,7 +4,7 @@ Donate link: http://adentify.com/
 Tags: tags, photos, photo, monetize, images
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,9 +48,14 @@ For more information visit business.adentify.com or email us at contact@adentify
 
 1. Tag your photo with products, people or placs
 2. Plugin's settings
-2. Enjoy tags!
+3. Enjoy tags!
 
 == Changelog ==
 
 = 1.0 =
 * First version of the plugin
+= 1.0.1 =
+* Support of french and english
+= 1.0.2 =
+* Fix tags visibility in media library
+* Vendors updates
