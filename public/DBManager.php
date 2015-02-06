@@ -41,6 +41,43 @@ class DBManager
         );
     }
 
+    /**
+     * Insert photos in wordpress table
+     *
+     * @param $photos
+     */
+    public function insertPhotos($photos) {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . ADENTIFY_SQL_TABLE_PHOTOS;
+
+        $ids = array();
+        foreach($photos as $photo)
+            $ids[] = $photo->id;
+
+        $ids = implode(',', $ids);
+
+        $alreadyAddedPhotos = $wpdb->get_results("SELECT adentify_photo_id FROM $table_name WHERE adentify_photo_id IN($ids)");
+        foreach($alreadyAddedPhotos as &$photo)
+            $photo = $photo->adentify_photo_id;
+
+        foreach($photos as $photo) {
+            if (in_array((string)$photo->id, $alreadyAddedPhotos))
+                continue;
+
+            if (property_exists($photo, 'small_url') && $photo->small_url) {
+                $wpdb->insert(
+                    $table_name,
+                    array(
+                        'time' => current_time( 'mysql' ),
+                        'adentify_photo_id' => $photo->id,
+                        'thumb_url' => $photo->small_url
+                    )
+                );
+            }
+        }
+    }
+
     public function getPhotos()
     {
         global $wpdb;

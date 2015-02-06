@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -50,7 +50,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.2');
+define( 'PLUGIN_VERSION', '1.0.3');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -124,7 +124,7 @@ function adentify_plugin_settings() {
     $settings = array();
     $productProvidersId = array();
 
-    //fill the settings array with the user's providers
+    // fill the settings array with the user's providers
     $productProviders = APIManager::getInstance()->getProductProviders();
     if (!empty($productProviders))
     {
@@ -164,6 +164,13 @@ function adentify_plugin_settings() {
         ));
     }
 
+    if (APIManager::getInstance()->isAccesTokenValid()) {
+        $photos = APIManager::getInstance()->getPhotos();
+        if ($photos && property_exists($photos, 'data')) {
+            DBManager::getInstance()->insertPhotos($photos->data);
+        }
+    }
+
     echo Twig::render('adentify.settings.html.twig', $settings);
 }
 
@@ -176,6 +183,7 @@ function adentify_button($editor_id = 'content') {
         esc_attr__( 'Upload images with AdEntify plugin' ),
         'AdEntify'
     );
+
     echo Twig::render('admin\modals\upload.modal.html.twig', array(
         'photos' => DBManager::getInstance()->getPhotos(),
         'max_upload_size' => $max_upload_size

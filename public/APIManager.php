@@ -274,6 +274,7 @@ class APIManager
                 update_option(ADENTIFY_API_ACCESS_TOKEN, $json->access_token);
                 update_option(ADENTIFY_API_REFRESH_TOKEN, $json->refresh_token);
                 update_option(ADENTIFY_API_EXPIRES_TIMESTAMP, strtotime(sprintf('+%s second', $json->expires_in)));
+                return true;
             } else
                 return false;
         } else
@@ -324,6 +325,17 @@ class APIManager
             'redirect_uri' => ADENTIFY_REDIRECT_URI,
             'response_type' => 'code'
         )));
+    }
+
+    public function getPhotos()
+    {
+        $response = $this->getAction(sprintf('user/current'));
+        $user = json_decode($response);
+        if ($user) {
+            return json_decode($this->getAction(sprintf('users/%s/photos?limit=300', $user->id)));
+        } else {
+            return null;
+        }
     }
 
     private function getAuthorizationHeader()

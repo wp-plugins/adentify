@@ -3,8 +3,8 @@ Contributors: (this should be a list of wordpress.org userid's)
 Donate link: http://adentify.com/
 Tags: tags, photos, photo, monetize, images
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.0.2
+Tested up to: 4.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,9 +21,9 @@ You've put significant effort into building a user base who values your content.
 User experience is the cornerstone of the AdEntify technology. Tags provide users with better information, where they need it and when they want it triggering profitable engagement and unprecedented conversion.
 
 What a difference a tag makes?
-? 100x Engagement
-? 10x Click-through rates
-? 5x Conversion
+- 100x Engagement
+- 10x Click-through rates
+- 5x Conversion
 
 Sign up on AdEntify and install this plugin so you can start adding key pieces of information (brands, products, places, affiliate links and people) directly to your images with discreet and customizable tags. AdEntify monetizes your visual content by providing you access to thousands of products, brands and over 10,000 merchant links. The best part is that it can be seamlessly integrated into your platform and it?s super easy to use.
 
@@ -46,9 +46,10 @@ For more information visit business.adentify.com or email us at contact@adentify
 
 == Screenshots ==
 
-1. Tag your photo with products, people or placs
+1. Tag your photo with products, people or places
 2. Plugin's settings
 3. Enjoy tags!
+4. Get analytics!
 
 == Changelog ==
 
@@ -58,4 +59,8 @@ For more information visit business.adentify.com or email us at contact@adentify
 * Support of french and english
 = 1.0.2 =
 * Fix tags visibility in media library
+* Vendors updates
+= 1.0.3 =
+* Add synchronization of AdEntify's account photos
+* Add new screenshot of analytics
 * Vendors updates
