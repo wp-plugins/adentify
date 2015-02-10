@@ -120,3 +120,6 @@ msgstr "You have to link your AdEntify account to the plugin before using it, pl
 
 msgid "notices2"
 msgstr "url to authorized the Plugin Wordpress app"
+
+msgid "analytics.syncPhotos"
+msgstr "Synchronize my AdEntify's pictures"

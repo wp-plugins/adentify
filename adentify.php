@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -141,35 +141,38 @@ function adentify_plugin_settings() {
     foreach(unserialize(ADENTIFY__PLUGIN_SETTINGS) as $key)
         $settings[$key.'Val'] = get_option($key);
 
-    if ($_POST) {
-        //update the settings array & the wordpress options
-	    foreach(unserialize(ADENTIFY__PLUGIN_SETTINGS) as $key) {
-            $settings[$key.'Val'] = (isset($_POST[$key])) ? $_POST[$key] : null;
-            update_option($key, (isset($_POST[$key])) ? $_POST[$key] : null);
-            foreach (json_decode($productProviders) as $provider) {
-                $providerKey = $provider->product_providers->provider_key.'ProviderKey';
-                if ($providerKey != 'adentifyProviderKey') {
-                    $settings['productProvidersKey'][$providerKey.'Val'] = (isset($_POST[$providerKey])) ? $_POST[$providerKey] : null;
-                    update_option($providerKey, (isset($_POST[$providerKey])) ? $_POST[$providerKey] : null);
-                    APIManager::getInstance()->putUserProductProvider($productProvidersId[substr($providerKey, 0, strpos($providerKey, 'ProviderKey'))], $_POST[$providerKey]);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['syncPhotos'])) {
+            if (APIManager::getInstance()->isAccesTokenValid()) {
+                $photos = APIManager::getInstance()->getPhotos();
+                if ($photos && property_exists($photos, 'data')) {
+                    DBManager::getInstance()->insertPhotos($photos->data);
                 }
             }
+        } else {
+            //update the settings array & the wordpress options
+            foreach(unserialize(ADENTIFY__PLUGIN_SETTINGS) as $key) {
+                $settings[$key.'Val'] = (isset($_POST[$key])) ? $_POST[$key] : null;
+                update_option($key, (isset($_POST[$key])) ? $_POST[$key] : null);
+                foreach (json_decode($productProviders) as $provider) {
+                    $providerKey = $provider->product_providers->provider_key.'ProviderKey';
+                    if ($providerKey != 'adentifyProviderKey') {
+                        $settings['productProvidersKey'][$providerKey.'Val'] = (isset($_POST[$providerKey])) ? $_POST[$providerKey] : null;
+                        update_option($providerKey, (isset($_POST[$providerKey])) ? $_POST[$providerKey] : null);
+                        APIManager::getInstance()->putUserProductProvider($productProvidersId[substr($providerKey, 0, strpos($providerKey, 'ProviderKey'))], $_POST[$providerKey]);
+                    }
+                }
+            }
+
+            echo '<div class="updated"><p><strong>Settings saved.</strong></p></div>';
+
+            wp_localize_script('adentify-admin-js', 'adentifyTagsData', array(
+                'admin_ajax_url' => ADENTIFY_ADMIN_URL,
+                'tag_shape' => get_option(unserialize(ADENTIFY__PLUGIN_SETTINGS)['TAGS_SHAPE']),
+            ));
         }
-
-        echo '<div class="updated"><p><strong>Settings saved.</strong></p></div>';
-
-        wp_localize_script('adentify-admin-js', 'adentifyTagsData', array(
-            'admin_ajax_url' => ADENTIFY_ADMIN_URL,
-            'tag_shape' => get_option(unserialize(ADENTIFY__PLUGIN_SETTINGS)['TAGS_SHAPE']),
-        ));
     }
 
-    if (APIManager::getInstance()->isAccesTokenValid()) {
-        $photos = APIManager::getInstance()->getPhotos();
-        if ($photos && property_exists($photos, 'data')) {
-            DBManager::getInstance()->insertPhotos($photos->data);
-        }
-    }
 
     echo Twig::render('adentify.settings.html.twig', $settings);
 }
