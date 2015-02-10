@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+
+"Project-Id-Version: adentify\n"
+"POT-Creation-Date: 2013-11-03 10:20+0200\n"
+"PO-Revision-Date: 2013-11-03 10:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "add.new.media"
+msgstr "Add a new media"
+
+msgid "upload.files"
+msgstr "Upload new files"
+
+msgid "media.library"
+msgstr "Media library"
+
+msgid "uploading"
+msgstr "Uploading"
+
+msgid "select.file"
+msgstr "Select a file"
+
+msgid "max.upload.size"
+msgstr "Max upload file size: "
+
+msgid "supported.type"
+msgstr "Supported format types: jpg, jpeg, png."
+
+msgid "add.tag"
+msgstr "Add a tag"
+
+msgid "photo.insert"
+msgstr "Insert in your article"
+
+msgid "photo.delete"
+msgstr "Delete the photo"
+
+msgid "photo.tag"
+msgstr "Add a tag"
+
+msgid "tag.product"
+msgstr "Product"
+
+msgid "tag.venue"
+msgstr "Venue"
+
+msgid "tag.person"
+msgstr "Person"
+
+msgid "button.back"
+msgstr "Back"
+
+msgid "button.done"
+msgstr "Done"
+
+msgid "tag.confirm"
+msgstr "Confirm and add the tag"
+
+msgid "tag.cancel"
+msgstr "Cancel"
+
+msgid "tag.description"
+msgstr "Description"
+
+msgid "tag.url"
+msgstr "Url"
+
+msgid "settings.photo.show"
+msgstr "Show photos on AdEntify"
+
+msgid "settings.photo.show.label"
+msgstr "Display the photos uploaded here on AdEntify"
+
+msgid "tags.visibility"
+msgstr "Tags visibility"
+
+msgid "tags.visibility.always"
+msgstr "Tags always visible"
+
+msgid "tags.visibility.hover"
+msgstr "Tags only visible on hover"
+
+msgid "tags.shape"
+msgstr "Tags shape"
+
+msgid "google.map"
+msgstr "Google maps API key"
+
+msgid "google.map.label"
+msgstr "Enter your google maps API key"
+
+msgid "product.providers"
+msgstr "Products Providers"
+
+msgid "product.providers.label"
+msgstr "Choose your products providers"
+
+msgid "product.providers.api.key"
+msgstr "Products providers API key"
+
+msgid "%productProvider% key (optional)"
+msgstr "%productProvider% key (optional)"
+
+msgid "settings.save"
+msgstr "Save the modifications"
+
+msgid "analytics"
+msgstr "Analytics"
+
+msgid "analytics.msg"
+msgstr "View my analytics on AdEntify.com"
+
+msgid "notices"
+msgstr "You have to link your AdEntify account to the plugin before using it, please connect to your AdEntify account on adentify.com and go to this "
+
+msgid "notices2"
+msgstr "url to authorized the Plugin Wordpress app"
+
+msgid "analytics.syncPhotos"
+msgstr "Synchronize my AdEntify's pictures"

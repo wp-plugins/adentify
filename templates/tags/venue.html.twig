@@ -1,0 +1,45 @@
+{% if model is defined %}
+<div class="tag {{ tagShape }} venue-tag-container" data-tag-id="{{ model.id }}" style="{{ tag.style }}">
+    <div class="tag-place-icon tag-icon"></div>
+        <div class="popover">
+            <div class="tag-popover-arrow"></div>
+            <div class="popover-inner">
+                <span class="title">{% if model.link %}<a href="{{ model.link }}" target="_blank" rel="nofollow">{{ model.title }}</a>{% else %}{{ model.title }}{% endif %}</span>
+                {% if model.description is defined and model.description %}
+                <p>{{ model.description }}</p>
+                {% endif %}
+                {% if googleMapsAPIKey and model.venue.lat and model.venue.lng %}
+                <div id="map-canvas-{{ model.id }}" class="map-canvas"></div>
+                {% endif %}
+            </div>
+        <div class="popover-details"></div>
+    </div>
+</div>
+{% if googleMapsAPIKey and model.venue.lat and model.venue.lng %}
+    <script type="text/javascript">
+        function initialize() {
+            if (!jQuery('#map-canvas-' + {{ model.id }}).attr('data-loaded')) {
+                var latLng = new google.maps.LatLng({{ model.venue.lat }}, {{ model.venue.lng }});
+                var mapOptions = {
+                    zoom:  14,
+                    center: latLng,
+                    scrollwheel: true,
+                    navigationControl: true,
+                    mapTypeControl: false,
+                    scaleControl: true,
+                    draggable: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById('map-canvas-' + {{ model.id }}),
+                        mapOptions);
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+                jQuery('#map-canvas-' + {{ model.id }}).attr('data-loaded', 'true');
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+{% endif %}
+{% endif %}
