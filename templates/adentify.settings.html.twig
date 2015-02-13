@@ -135,7 +135,6 @@
                                         value="{% if(productProvidersKey[productProvider ~ 'ProviderKeyVal']) %}{{ productProvidersKey[productProvider ~ 'ProviderKeyVal'] }}{% endif %}"/>
                                     {% set productProvider = productProvider|capitalize %}
                                     {% trans %}{{ productProvider }} key (optional){% endtrans %}
-                                    {#{{ productProvider|capitalize }} key (optional)#}
                                 </label>
                                 <br>
                             {% endif %}
@@ -150,6 +149,7 @@
         </p>
 
         <h2>{% trans 'analytics'%}</h2>
+        <p><input type="submit" name="syncPhotos" id="submit" class="button button-primary" value="{% trans 'analytics.syncPhotos' %}"  /></p>
         <p><a href="http://adentify.com/en/app/my/dashboard/analytics" target="_blank" class="button button-primary">{% trans "analytics.msg" %}</a></p>
     </form>
 </div>
