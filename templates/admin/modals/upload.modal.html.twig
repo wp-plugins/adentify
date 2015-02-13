@@ -1,0 +1,106 @@
+<script type="text/html" id="adentify-uploader">
+    <div tabindex="0" id="__wp-uploader-id-2" class="supports-drag-drop" style="position: relative;">
+        <div class="media-modal wp-core-ui">
+            <a id="adentify-modal-close" class="media-modal-close" href="#"><span class="media-modal-icon"><span class="screen-reader-text">Fermer le panneau des médias</span></span></a>
+            <div id="ad-upload-modal" class="media-modal-content">
+                <div class="media-frame mode-select wp-core-ui" id="__wp-uploader-id-0">
+                    <div class="ad-media-frame-title"><h1>{% trans 'add.new.media' %}</h1></div>
+                    <div class="ad-media-frame-router">
+                        <div class="media-router">
+                            <a id="upload-file" href="#" class="media-menu-item active">{% trans 'upload.files'%}</a>
+                            <a id="file-library" href="#" class="media-menu-item">{% trans 'media.library' %}</a>
+                        </div>
+                    </div>
+                    <div class="ad-media-frame-content">
+                        <div id="ad-uploader" class="uploader-inline">
+                            <div class="uploader-inline-content no-upload-message">
+                                <div id="ad-uploading-message" class="loading-gif-container" style="display: none;">
+                                    <h3 class="upload-instructions drop-instructions">{% trans 'uploading' %}</h3>
+                                    <div class="loader rotate">
+                                        <div class="loading-gif"></div>
+                                    </div>
+                                </div>
+                                <div id="ad-uploader-content">
+                                    <div class="upload-ui">
+                                        <form role="form" enctype="multipart/form-data">
+                                            <input id="upload-img" type="file" accept="image/jpeg, image/jpg, image/png" name="ad-upload-img" style="display: none"/>
+                                            <a href="#" class="browser button button-hero" style="display: inline; position: relative; z-index: 1;" id="adentify-uploader-button">
+                                                {% trans 'select.file' %}
+                                            </a>
+                                        </form>
+                                    </div>
+                                    <div class="upload-inline-status">
+                                        <div class="media-uploader-status" style="display: none;">
+                                            <h3>Mise en ligne</h3>
+                                            <a class="upload-dismiss-errors" href="#">Ignorer les erreurs</a>
+                                            <div class="media-progress-bar"><div>
+                                                </div></div>
+                                            <div class="upload-details">
+                                            <span class="upload-count">
+                                                <span class="upload-index"></span> / <span class="upload-total"></span>
+                                            </span>
+                                                <span class="upload-detail-separator">–</span>
+                                                <span class="upload-filename"></span>
+                                            </div>
+                                            <div class="upload-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="post-upload-ui">
+                                        <p class="max-upload-size">{% trans 'max.upload.size' %}{{ max_upload_size }} MB.</p>
+                                        <p>{% trans 'supported.type' %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ad-library" style="display:none">
+                            <div id="ad-library-content">
+                                <ul id="ad-library-list">
+                                    {% for photo in photos %}
+                                        <li class="ad-library-photo-thumbnail">
+                                            <div class="ad-library-photo-wrapper" data-wp-photo-id="{{ photo.wordpress_photo_id }}" data-adentify-photo-id="{{ photo.adentify_photo_id }}" style="background-image: url({{ photo.thumb_url }})"></div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ad-media-frame-toolbar">
+                        <div class="media-toolbar">
+                            <div class="media-toolbar-secondary">
+                                <div class="media-selection empty">
+                                    <div class="selection-info">
+                                        <span class="count">0 sélection(s)</span>
+                                        <a class="edit-selection" href="#">Modifier</a>
+                                        <a class="clear-selection" href="#">Effacer</a>
+                                    </div>
+                                    <div class="selection-view">
+                                        <ul tabindex="-1" class="attachments ui-sortable" id="__attachments-view-75"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-toolbar-primary search-form">
+                                <div id="ad-uploading-message" class="loading-gif-container" style="">
+                                    <div class="loader rotate">
+                                        <div id="ad-tag-from-library-loading" class="loading-gif"></div>
+                                    </div>
+                                </div>
+                                <div id="ad-tag-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'add.tag' %}</div>
+                                <div id="ad-insert-from-library" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'photo.insert' %}</div>
+                                <div id="ad-delete-photo" class="ad-upload-button button button-primary button-large media-button-insert" disabled="disabled">{% trans 'photo.delete' %}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-frame-uploader">
+                        <div class="uploader-window">
+                            <div class="uploader-window-content">
+                                <h3>Déposez vos fichiers pour les mettre en ligne</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="adentify-modal-backdrop" class="ad-media-modal-backdrop"></div>
+    </div>
+</script>
