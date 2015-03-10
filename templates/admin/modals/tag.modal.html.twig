@@ -17,9 +17,10 @@
                     </div>
                     <div class="ad-tag-router">
                         <div class="media-router">
-                            <a id="ad-tag-product-tab" href="#" class="media-menu-item active">{% trans 'tag.product' %}</a>
-                            <a id="ad-tag-venue-tab" href="#" class="media-menu-item">{% trans 'tag.venue' %}</a>
-                            <a id="ad-tag-person-tab" href="#" class="media-menu-item">{% trans 'tag.person' %}</a>
+                            <a id="ad-tag-product-tab" href="#" data-target="#tag-product" class="tag-tab media-menu-item active">{% trans 'tag.product' %}</a>
+                            <a id="ad-tag-venue-tab" href="#" data-target="#tag-venue" class="tag-tab media-menu-item">{% trans 'tag.venue' %}</a>
+                            <a id="ad-tag-person-tab" href="#" data-target="#tag-person" class="tag-tab media-menu-item">{% trans 'tag.person' %}</a>
+                            <a id="ad-tag-advertising-tab" href="#" data-target="#tag-advertising" class="tag-tab media-menu-item">{% trans 'tag.advertising' %}</a>
                         </div>
                     </div>
                     <div class="media-sidebar" style="top: 84px; bottom: 61px; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; width: 467px; background-color: #f3f3f3">
@@ -28,6 +29,7 @@
                             {% include 'admin/modals/tag.product.html.twig' %}
                             {% include 'admin/modals/tag.venue.html.twig' %}
                             {% include 'admin/modals/tag.person.html.twig' %}
+                            {% include 'admin/modals/tag.advertising.html.twig' %}
                         </div>
                     </div>
                     <div class="ad-media-frame-toolbar">

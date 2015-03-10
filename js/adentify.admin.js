@@ -45,25 +45,16 @@ var AdEntifyBO = {
    },
 
    clickOnTagTab: function(e) {
-      jQuery('#ad-tag-product-tab, #ad-tag-venue-tab, #ad-tag-person-tab').removeClass('active');
+      jQuery('.tag-tab').removeClass('active');
       jQuery(e.target).addClass('active');
       jQuery('.tag-form').hide();
       this.hideOpenedSelect2();
-      switch(e.target.id) {
-         case 'ad-tag-venue-tab':
-            jQuery('#tag-venue').show();
-            jQuery('#tag-venue input').first().focus();
-            break;
-         case 'ad-tag-person-tab':
-            jQuery('#tag-person').show();
-            jQuery('#tag-person input').first().focus();
-            break;
-         case 'ad-tag-product-tab':
-         default:
-            jQuery('#tag-product').show();
-            jQuery('#tag-product input').first().focus();
-            break;
-      }
+
+      // Switch tab
+      jQuery(jQuery(e.target).data('target')).show();
+      // Focus
+      jQuery(jQuery(e.target).data('target') + 'input').first().focus();
+
       return false;
    },
 
@@ -150,7 +141,7 @@ var AdEntifyBO = {
       jQuery('#upload-file, #file-library').click(jQuery.proxy(this.clickOnUploadTab, this));
 
       // switch between the tag's tabs
-      jQuery('#ad-tag-product-tab, #ad-tag-venue-tab, #ad-tag-person-tab').click(jQuery.proxy(this.clickOnTagTab, this));
+      jQuery('.tag-tab').click(jQuery.proxy(this.clickOnTagTab, this));
 
       // upload the image
       jQuery('#adentify-uploader-button').click(jQuery.proxy(this.clickOnUploaderButton, this));
@@ -159,7 +150,7 @@ var AdEntifyBO = {
       jQuery('.ad-media-frame-content .photo-overlay').click(jQuery.proxy(this.addTag, this));
 
       // post tag
-      jQuery('#submit-tag-product, #submit-tag-venue, #submit-tag-person').click(jQuery.proxy(this.retrieveTagData, this));
+      jQuery('.submit-tag-button').click(jQuery.proxy(this.retrieveTagData, this));
 
       // delete a tag
       jQuery('div').on('click', '.ad-delete-tag', jQuery.proxy(this.removeTag, this));
@@ -178,6 +169,8 @@ var AdEntifyBO = {
 
       // delete a photo
       jQuery('#ad-delete-photo').click(jQuery.proxy(this.clickOnDeletePhoto, this));
+
+      jQuery('#ad-formats').change(this.changeAdFormats);
    },
 
    /*
@@ -193,16 +186,9 @@ var AdEntifyBO = {
          rowclass:'tinyeditor-header', // (optional) CSS class of the button rows
          dividerclass:'tinyeditor-divider', // (optional) CSS class of the button diviers
          controls:['bold', 'italic', 'underline', 'strikethrough', '|', 'orderedlist', 'unorderedlist'],
-         //footer:true, // (optional) show the footer
          fonts:['Verdana','Arial','Georgia','Trebuchet MS'],  // (optional) array of fonts to display
-         //xhtml:true, // (optional) generate XHTML vs HTML
-         //cssfile:'style.css', // (optional) attach an external CSS file to the editor
-         //content:'<p>test</p>', // (optional) set the starting content else it will default to the textarea content
          css:'body{background-color:white}', // (optional) attach CSS to the editor
          bodyid:'product-description-editor', // (optional) attach an ID to the editor body
-         //footerclass:'tefooter', // (optional) CSS class of the footer
-         //toggle:{text:'source',activetext:'wysiwyg',cssclass:'toggle'}, // (optional) toggle to markup view options
-         //resize:{cssclass:'resize'} // (optional) display options for the editor resize
       });
    },
 
@@ -261,7 +247,7 @@ var AdEntifyBO = {
             break;
          case 'posting-tag':
          default:
-            jQuery('#ad-posting-tag-person, #ad-posting-tag-product, #ad-posting-tag-venue').show();
+            jQuery('.tag-posting').show();
             break;
       }
    },
@@ -279,7 +265,7 @@ var AdEntifyBO = {
             break;
          case 'posting-tag':
          default:
-            jQuery('#ad-posting-tag-person, #ad-posting-tag-product, #ad-posting-tag-venue').hide();
+            jQuery('.tag-posting').hide();
             break;
       }
    },
@@ -304,7 +290,6 @@ var AdEntifyBO = {
          });
       } catch(e) {
          console.log("Error appending photo to library: ");
-         console.log(e);
       }
    },
 
@@ -328,7 +313,6 @@ var AdEntifyBO = {
          + '" src="' + photo.large_url + '"/>');
          (photo.large_height > maxHeight) ? jQuery('#ad-wrapper-tag-photo').height(maxHeight) : jQuery('#ad-wrapper-tag-photo').height(photo.large_height);
       } catch(e) {
-         console.log(e);
          console.log("Error: " + data); // TODO gestion erreur
       }
    },
@@ -619,10 +603,13 @@ var AdEntifyBO = {
 
          var properties = {
             'type': jQuery(e.target).context.form.attributes['data-tag-type'].value,
-            'description': tagForm.description,
-            'link': tagForm.url,
             'photo': jQuery('#photo-getting-tagged').attr('data-adentify-photo-id')
          };
+
+         if (typeof tagForm.description !== 'undefined')
+            properties.description = tagForm.description;
+         if (typeof tagForm.url !== 'undefined')
+            properties.link = tagForm.url;
 
          switch (jQuery(e.target).context.form.attributes['data-tag-type'].value) {
             case 'place':
@@ -696,6 +683,20 @@ var AdEntifyBO = {
                   }
                });
                break;
+            case 'advertising':
+               tag.tagInfo = {
+                  dimensions: {
+                     width: tagForm.width,
+                     height: tagForm.height
+                  },
+                  code: tagForm.code
+               };
+               tag.type = 'advertising';
+               tag.title = 'advertising';
+
+               jQuery.extend(tag, properties);
+               that.postTag(tag);
+               break;
          }
       } else {
          alert('Vous devez tout d\'abord ajouter un tag sur l\'image');
@@ -741,66 +742,27 @@ var AdEntifyBO = {
          if (typeof this.photoIdSelected !== "undefined" && this.photoIdSelected) {
             window.send_to_editor('[adentify=' + this.photoIdSelected + ']');
             this.closeModals();
-         }
-         else
+         } else
             console.log("you have to select a photo"); // TODO: gestion erreur
       }
       return false;
    },
 
-   createCORSRequest: function(method, url) {
-      var xhr = new XMLHttpRequest();
-      if ("withCredentials" in xhr) {
-         // XHR for Chrome/Firefox/Opera/Safari.
-         xhr.open(method, url, true);
-      } else if (typeof XDomainRequest != "undefined") {
-         // XDomainRequest for IE.
-         xhr = new XDomainRequest();
-         xhr.open(method, url);
+   changeAdFormats: function() {
+      if (jQuery(this).val() !== 'custom') {
+         var format = jQuery(this).val().split('-');
+         jQuery('#ad-width').val(format[0]);
+         jQuery('#ad-height').val(format[1]);
       } else {
-         // CORS not supported.
-         xhr = null;
+         jQuery('#ad-width').val('');
+         jQuery('#ad-height').val('');
       }
-      return xhr;
    },
 
    /*
     * Init
     * */
    init: function() {
-      /*var xhr = this.createCORSRequest('GET', adentifyTagsData.adentify_api_brand_search_url + '?query=ad');
-      if (xhr) {
-         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         xhr.setRequestHeader('X-Custom-Header', 'value');
-         xhr.send();
-         //'tag=1&action=hover&element=tag&platform=wordpress&user=1'
-      }
-
-      xhr = this.createCORSRequest('POST', adentifyTagsData.adentify_api_analytics_post_url);
-      if (xhr) {
-         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         xhr.setRequestHeader('X-Custom-Header', 'value');
-         xhr.send('tag=1&action=hover&element=tag&platform=wordpress&user=1');
-         //'tag=1&action=hover&element=tag&platform=wordpress&user=1'
-      }*/
-
-     /* var xhr = this.createCORSRequest('POST', adentifyTagsData.adentify_api_analytics_post_url);
-      if (xhr) {
-         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         xhr.setRequestHeader('X-Custom-Header', 'value');
-         xhr.send(jQuery.param({
-            'analytic': {
-               'platform': 'wordpress',
-               'action': 'hover',
-               'element': 'photo',
-               'photo': 164,
-               'user': 1
-            }
-         }));
-
-         *//*xhr.send('tagId=' + jQuery(this).data('tag-id') + '&statType=hover');*//*
-      }*/
-
       var that = this;
       // Listen click event on AdEntify button
       var adentifyButton = jQuery('#adentify-upload-img');
@@ -810,29 +772,6 @@ var AdEntifyBO = {
             return false;
          });
       }
-
-      /*jQuery.ajax({
-         url: adentifyTagsData.adentify_api_analytics_post_url,
-         type: 'POST',
-         xhrFields: {
-            withCredentials: true
-         },
-         contentType: 'text/plain',
-         crossDomain: true,
-         headers: {
-            'X-Custom-Header': 'value',
-            'Authorization': 'Bearer ' + adentifyTagsData.adentify_api_access_token
-         },
-         data: {
-            'analytic': {
-               'platform': 'wordpress',
-               'action': 'hover',
-               'element': 'photo',
-               'photo': 164,
-               'user': 1
-            }
-         }
-      });*/
    }
 };
 

@@ -52,6 +52,9 @@ msgstr "Lieu"
 msgid "tag.person"
 msgstr "Personne"
 
+msgid "tag.advertising"
+msgstr "Publicité"
+
 msgid "button.back"
 msgstr "Précédent"
 
@@ -123,3 +126,18 @@ msgstr "url pour autoriser le Plugin Wordpress"
 
 msgid "analytics.syncPhotos"
 msgstr "Synchroniser mes photos AdEntify"
+
+msgid "tag.advertising.customFormat"
+msgstr "Format personnalisé"
+
+msgid "tag.advertising.labelWidth"
+msgstr "Largeur"
+
+msgid "tag.advertising.labelHeight"
+msgstr "Hauteur"
+
+msgid "tag.advertising.labelCode"
+msgstr "Code"
+
+msgid "tag.advertising.formats"
+msgstr "Formats"

@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -50,7 +50,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.5');
+define( 'PLUGIN_VERSION', '1.0.6');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -138,7 +138,7 @@ function adentify_plugin_settings() {
     }
 
     //fill the settings array with wordpress options if they are already set
-    foreach(unserialize(ADENTIFY__PLUGIN_SETTINGS) as $key)
+    foreach (unserialize(ADENTIFY__PLUGIN_SETTINGS) as $key)
         $settings[$key.'Val'] = get_option($key);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

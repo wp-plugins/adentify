@@ -240,7 +240,6 @@ class APIManager
     {
         $response = $this->postAction('client', array(
             'client' => array(
-                /*'_token' => $json->csrf_token,*/
                 'name' => ADENTIFY_API_CLIENT_NAME,
                 'displayName' => 'Plugin Wordpress AdEntify',
                 'redirectUris' => array(ADENTIFY_REDIRECT_URI)

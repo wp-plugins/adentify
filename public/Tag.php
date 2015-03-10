@@ -105,8 +105,10 @@ class Tag
         $tag = new Tag;
         $tag->setType($postArray['type']);
         $tag->setTitle($postArray['title']);
-        $tag->setDescription($postArray['description']);
-        $tag->setLink($postArray['link']);
+        if (array_key_exists('description', $postArray))
+            $tag->setDescription($postArray['description']);
+        if (array_key_exists('link', $postArray))
+            $tag->setLink($postArray['link']);
         $tag->setXPosition($postArray['x_position']);
         $tag->setYPosition($postArray['y_position']);
         $tag->setPhoto($postArray['photo']);
@@ -134,6 +136,8 @@ class Tag
                 if ($tag->getPerson())
                     return $tag;
                 break;
+            case 'advertising':
+                return $tag;
             default:
                 break;
         }

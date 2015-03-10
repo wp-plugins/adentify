@@ -52,6 +52,9 @@ msgstr "Venue"
 msgid "tag.person"
 msgstr "Person"
 
+msgid "tag.advertising"
+msgstr "Advertising"
+
 msgid "button.back"
 msgstr "Back"
 
@@ -123,3 +126,18 @@ msgstr "url to authorized the Plugin Wordpress app"
 
 msgid "analytics.syncPhotos"
 msgstr "Synchronize my AdEntify's pictures"
+
+msgid "tag.advertising.customFormat"
+msgstr "Custom format"
+
+msgid "tag.advertising.labelWidth"
+msgstr "Width"
+
+msgid "tag.advertising.labelHeight"
+msgstr "Height"
+
+msgid "tag.advertising.labelCode"
+msgstr "Code"
+
+msgid "tag.advertising.formats"
+msgstr "Formats"
