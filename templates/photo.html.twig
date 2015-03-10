@@ -1,0 +1,15 @@
+<div class="adentify-container" data-tags-visibility="{{ tagsVisibility }}" data-photo-id="{{ photoId }}" style="z-index:{{ zIndex }}">
+    <img src="{{ imageUrl }}" />
+    {% if renderWithTags %}
+    <ul class="tags">
+        {% for tag in tags %}
+            <li>
+                {% if tag.type == 'place' %}{{ include('tags/venue.html.twig', { model: tag, tagShape: tagShape, googleMapsAPIKey: 'AIzaSyBR5q9gPkuTSC48dmCr1sBEKMOB2qExu3s' }) }}
+                {% elseif tag.type == 'person' %}{{ include('tags/person.html.twig', { model: tag, tagShape: tagShape }) }}
+                {% elseif tag.type == 'advertising' %}{{ include('tags/advertising.html.twig', { model: tag, tagShape: tagShape }) }}
+                {% else %}{{ include('tags/product.html.twig', { model: tag, tagShape: tagShape }) }}{% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
