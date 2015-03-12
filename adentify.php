@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.7
+ * Version: 1.0.8
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -43,14 +43,13 @@ define( 'ADENTIFY__PLUGIN_SETTINGS', serialize(array(
 define( 'ADENTIFY_PLUGIN_SETTINGS_PAGE_NAME', 'adentify_plugin_submenu');
 define( 'ADENTIFY_REDIRECT_URI', admin_url(sprintf('options-general.php?page=%s', ADENTIFY_PLUGIN_SETTINGS_PAGE_NAME)) );
 define( 'ADENTIFY_ADMIN_URL', admin_url('admin-ajax.php'));
-define( 'ADENTIFY_AJAX_URL', plugin_dir_url( __FILE__ ) . 'ajax.php');
 define( 'ADENTIFY_API_CLIENT_NAME', sprintf('plugin_wordpress_%s', $_SERVER['HTTP_HOST']));
 define( 'ADENTIFY_API_CLIENT_ID_KEY', 'api_client_id');
 define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.7');
+define( 'PLUGIN_VERSION', '1.0.8');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -398,7 +397,6 @@ function ad_upload() {
     else
         wp_send_json_error("status code: 401 Unauthorized");
 }
-add_action( 'wp_ajax_ad_upload', 'ad_upload' );
 
 function ad_tag() {
     $tag = Tag::loadPost($_POST['tag']);
@@ -409,20 +407,16 @@ function ad_tag() {
         echo $result->getBody();
     exit();
 }
-add_action( 'wp_ajax_ad_tag', 'ad_tag' );
 
 function ad_get_photo() {
     @header( 'Content-Type: application/json; charset=' . get_option( 'blog_charset' ) );
     echo APIManager::getInstance()->getPhoto($_GET['photo_id']);
     wp_die();
 }
-add_action( 'wp_ajax_ad_get_photo', 'ad_get_photo' );
 
 function ad_analytics() {
     echo APIManager::getInstance()->postAnalytic($_POST['analytic']);
 }
-add_action( 'wp_ajax_nopriv_ad_analytics', 'ad_analytics');
-//add_action( 'wp_ajax_ad_analytics', 'ad_analytics');
 
 function ad_admin_notice() {
     if (!APIManager::getInstance()->getAccessToken() && !array_key_exists('code', $_GET))
@@ -436,14 +430,22 @@ function ad_delete_photo() {
     if (APIManager::getInstance()->getAccessToken()) {
         wp_delete_attachment($_GET['wp_photo_id']);
         DBManager::getInstance()->deletePhoto($_GET['wp_photo_id']);
-        //print_r(APIManager::getInstance()->deletePhoto($_GET['photo_id']));
     }
 }
-add_action( 'wp_ajax_ad_delete_photo', 'ad_delete_photo' );
 
 function ad_remove_tag() {
     if (APIManager::getInstance()->getAccessToken()) {
         print_r(APIManager::getInstance()->deleteTag($_GET['tag_id']));
     }
 }
-add_action( 'wp_ajax_ad_remove_tag', 'ad_remove_tag' );
+
+if ( is_admin() ) {
+    add_action( 'wp_ajax_ad_upload', 'ad_upload' );
+    add_action( 'wp_ajax_ad_tag', 'ad_tag' );
+    add_action( 'wp_ajax_ad_get_photo', 'ad_get_photo' );
+    add_action( 'wp_ajax_ad_remove_tag', 'ad_remove_tag' );
+    add_action( 'wp_ajax_ad_delete_photo', 'ad_delete_photo' );
+    add_action( 'wp_ajax_ad_analytics', 'ad_analytics');
+} else {
+    add_action( 'wp_ajax_nopriv_ad_analytics', 'ad_analytics');
+}

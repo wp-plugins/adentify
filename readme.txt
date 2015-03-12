@@ -4,7 +4,7 @@ Donate link: http://adentify.com/
 Tags: tags, photos, photo, monetize, images
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,3 +72,5 @@ For more information visit business.adentify.com or email us at contact@adentify
 * New tag type : advertising. Now, you can add ads in your tags
 = 1.0.7 =
 * Fix translations
+= 1.0.8 =
+* Fix analytics when users are logged
