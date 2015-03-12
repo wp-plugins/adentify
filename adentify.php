@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.6
+ * Version: 1.0.7
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -50,7 +50,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.6');
+define( 'PLUGIN_VERSION', '1.0.7');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -436,7 +436,7 @@ function ad_delete_photo() {
     if (APIManager::getInstance()->getAccessToken()) {
         wp_delete_attachment($_GET['wp_photo_id']);
         DBManager::getInstance()->deletePhoto($_GET['wp_photo_id']);
-        print_r(APIManager::getInstance()->deletePhoto($_GET['photo_id']));
+        //print_r(APIManager::getInstance()->deletePhoto($_GET['photo_id']));
     }
 }
 add_action( 'wp_ajax_ad_delete_photo', 'ad_delete_photo' );
