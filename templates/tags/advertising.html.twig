@@ -1,0 +1,14 @@
+{% if model is defined %}
+    <div class="tag {{ tagShape }} advertising-tag-container" data-tag-id="{{ model.id }}" style="{{ tag.style }}">
+        <div class="glyphicon glyphicon-tag tag-icon"></div>
+        <div class="popover">
+            <div class="tag-popover-arrow"></div>
+            <div class="popover-inner">
+                <div class="ad-tag-info">
+                    {{ model.tag_info.info.code|raw }}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endif %}
