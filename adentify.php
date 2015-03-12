@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -49,7 +49,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.8');
+define( 'PLUGIN_VERSION', '1.0.9');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -439,13 +439,11 @@ function ad_remove_tag() {
     }
 }
 
-if ( is_admin() ) {
-    add_action( 'wp_ajax_ad_upload', 'ad_upload' );
-    add_action( 'wp_ajax_ad_tag', 'ad_tag' );
-    add_action( 'wp_ajax_ad_get_photo', 'ad_get_photo' );
-    add_action( 'wp_ajax_ad_remove_tag', 'ad_remove_tag' );
-    add_action( 'wp_ajax_ad_delete_photo', 'ad_delete_photo' );
-    add_action( 'wp_ajax_ad_analytics', 'ad_analytics');
-} else {
-    add_action( 'wp_ajax_nopriv_ad_analytics', 'ad_analytics');
-}
+
+add_action( 'wp_ajax_ad_upload', 'ad_upload' );
+add_action( 'wp_ajax_ad_tag', 'ad_tag' );
+add_action( 'wp_ajax_ad_get_photo', 'ad_get_photo' );
+add_action( 'wp_ajax_ad_remove_tag', 'ad_remove_tag' );
+add_action( 'wp_ajax_ad_delete_photo', 'ad_delete_photo' );
+add_action( 'wp_ajax_ad_analytics', 'ad_analytics');
+add_action( 'wp_ajax_nopriv_ad_analytics', 'ad_analytics');
