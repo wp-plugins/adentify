@@ -1,0 +1,155 @@
+<div class="wrap">
+    <h2>AdEntify settings</h2>
+
+    <form method="post" action="" novalidate="novalidate">
+
+        <table class="form-table">
+            <tr>
+                <th scope="row">{% trans 'settings.photo.show' %}</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>{% trans 'settings.photo.show' %}</span>
+                        </legend>
+                        <label for="photoIsPrivate">
+                            <input name="photoIsPrivate" type="checkbox" id="photoIsPrivate" {% if(photoIsPrivateVal) %} checked {% endif %}/>{% trans 'settings.photo.show.label' %}
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+{#            <tr>
+                <th scope="row">Products from AdEntify database</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>Have access to adentify database's products</span>
+                        </legend>
+                        <label for="adentifyDatabase">
+                            <input name="adentifyDatabase" type="checkbox" id="adentifyDatabase" {% if(adentifyDatabaseVal) %} checked {% endif %}"/> Grant access to adentify database's products
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>#}
+            <tr>
+                <th scope="row">{% trans 'tags.visibility' %}</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>{% trans 'tags.visibility' %}</span>
+                        </legend>
+                        <label for="always-visible">
+                            <input type="radio" name="tagsVisibility" id="always-visible" value="always-visible" {{ (tagsVisibilityVal == 'always-visible') ? 'checked' : null }}>{% trans 'tags.visibility.always' %} &nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="visible-on-hover">
+                            <input type="radio" name="tagsVisibility" id="visible-on-hover" value="visible-on-hover" {{ (tagsVisibilityVal == 'visible-on-hover') ? 'checked' : null }}>{% trans 'tags.visibility.hover' %}<br>
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr class="tagShape">
+                <th scope="row">{% trans 'tags.shape' %}</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>{% trans 'tags.shape' %}</span>
+                        </legend>
+                        <label for="tagShape1">
+                            <input type="radio" name="tagShape" id="tagShape1" value="tagShape1" {{ (tagShapeVal == 'tagShape1') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape1"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape2">
+                            <input type="radio" name="tagShape" id="tagShape2" value="tagShape2" {{ (tagShapeVal == 'tagShape2') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape2"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape3">
+                            <input type="radio" name="tagShape" id="tagShape3" value="tagShape3" {{ (tagShapeVal == 'tagShape3') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape3"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape4">
+                            <input type="radio" name="tagShape" id="tagShape4" value="tagShape4" {{ (tagShapeVal == 'tagShape4') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape4"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <span>Opaque</span>
+                        </BR>
+                        <label for="tagShape5">
+                            <input type="radio" name="tagShape" id="tagShape5" value="tagShape5" {{ (tagShapeVal == 'tagShape5') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape5"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape6">
+                            <input type="radio" name="tagShape" id="tagShape6" value="tagShape6" {{ (tagShapeVal == 'tagShape6') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape6"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape7">
+                            <input type="radio" name="tagShape" id="tagShape7" value="tagShape7" {{ (tagShapeVal == 'tagShape7') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape7"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <label for="tagShape8">
+                            <input type="radio" name="tagShape" id="tagShape8" value="tagShape8" {{ (tagShapeVal == 'tagShape8') ? 'checked' : null }}>
+                            <div class="ad-radio-button tagShape8"></div>&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <span>Transparent</span>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'google.map' %}</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>{% trans 'google.map' %}</span>
+                        </legend>
+                        <label for="googleMapsKey">
+                            <input name="googleMapsKey" type="text" id="googleMapsKey" value="{% if(googleMapsKeyVal) %}{{ googleMapsKeyVal }}{% endif %}"/>{% trans 'google.map.label' %}
+                        </label>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'product.providers' %}</th>
+                <td>
+                    <label for="product-providers">
+                        <select multiple="multiple" name="productsProviders[]" id="product-providers">
+                            {% for productProvider in providers_list %}
+                                <option {% if (productProvider == 'adentify' and productsProvidersVal is empty)
+                                            or productProvider in productsProvidersVal%}
+                                            selected="selected"
+                                        {% endif %}
+                                        value={{ productProvider }}>{{ productProvider }}</option>
+                            {% endfor %}
+                        </select>
+                        {% trans 'product.providers.label' %}
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">{% trans 'product.providers.api.key' %}</th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span>{% trans 'product.providers.api.key' %}</span>
+                        </legend>
+                        {% for productProvider in providers_list %}
+                            {% if(productProvider != 'adentify') %}
+                                <label for="{{ productProvider }}ProviderKey">
+                                    <input name="{{ productProvider }}ProviderKey" type="text" id="{{ productProvider }}ProviderKey"
+                                        value="{% if(productProvidersKey[productProvider ~ 'ProviderKeyVal']) %}{{ productProvidersKey[productProvider ~ 'ProviderKeyVal'] }}{% endif %}"/>
+                                    {% set productProvider = productProvider|capitalize %}
+                                    {% trans %}{{ productProvider }} key (optional){% endtrans %}
+                                </label>
+                                <br>
+                            {% endif %}
+                        {% endfor %}
+
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <p class="submit">
+            <input type="submit" name="submit" id="submit" class="button button-primary" value="{% trans 'settings.save' %}"  />
+        </p>
+
+        <h2>{% trans 'analytics'%}</h2>
+        <p><input type="submit" name="syncPhotos" id="submit" class="button button-primary" value="{% trans 'analytics.syncPhotos' %}"  /></p>
+        <p><a href="http://adentify.com/en/app/my/dashboard/analytics" target="_blank" class="button button-primary">{% trans "analytics.msg" %}</a></p>
+    </form>
+</div>

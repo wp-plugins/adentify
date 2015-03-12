@@ -1,0 +1,37 @@
+<form id="ad-advertising-tag-form" data-tag-type="advertising">
+    <div class="tag-form tab-pane active" id="tag-advertising" style="display: none">
+        <div class="form-group">
+            <label>{% trans 'tag.advertising.formats' %}</label>
+            <select id="ad-formats" class="form-control">
+                <option value="300-250">300x250</option>
+                <option value="320-100">320x100</option>
+                <option value="custom">{% trans 'tag.advertising.customFormat' %}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>{% trans 'tag.advertising.labelWidth' %}</label>
+                    <input class="form-control" type="text" id="ad-width" name="width" value="300">
+                </div>
+                <div class="col-xs-6">
+                    <label>{% trans 'tag.advertising.labelHeight' %}</label>
+                    <input class="form-control" type="text" id="ad-height" name="height" value="250">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>{% trans 'tag.advertising.labelCode' %}</label>
+            <textarea class="form-control" id="ad-code" name="code"></textarea>
+        </div>
+        <p class="submit-tag">
+            <button id="submit-tag-advertising" class="submit-tag-button" type="submit">{% trans 'tag.confirm' %}</button>
+            <button id="cancel-tag-advertising">{% trans 'tag.cancel' %}</button>
+        </p>
+        <div id="ad-posting-tag-advertising" class="tag-posting loading-gif-container" style="display: none">
+            <div class="loader rotate">
+                <div class="loading-gif"></div>
+            </div>
+        </div>
+    </div>
+</form>
