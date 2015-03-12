@@ -1,0 +1,25 @@
+<form id="ad-product-tag-form" data-tag-type="product">
+    <div class="tag-form tab-pane active" id="tag-product">
+        <div class="form-group">
+            <input class="form-control" id="product-name" name="product" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="brand-name" name="brand" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="product-url" name="url" type="text" placeholder="{% trans 'tag.url' %}">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="product-description" placeholder="{% trans 'tag.description' %}" name="description"></textarea>
+        </div>
+        <p class="submit-tag">
+            <button id="submit-tag-product" class="submit-tag-button" type="submit">{% trans 'tag.confirm' %}</button>
+            <button id="cancel-tag-product">{% trans 'tag.cancel' %}</button>
+        </p>
+        <div id="ad-posting-tag-product" class="tag-posting loading-gif-container" style="display: none">
+            <div class="loader rotate">
+                <div class="loading-gif"></div>
+            </div>
+        </div>
+    </div>
+</form>

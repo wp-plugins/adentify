@@ -1,0 +1,22 @@
+<form id="ad-person-tag-form" data-tag-type="person">
+    <div class="tag-form tab-pane active" id="tag-person" style="display: none">
+        <div class="form-group">
+            <input class="form-control" id="person-name" name="name" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="person-description" name="description" type="text" placeholder="{% trans 'tag.description' %}">
+        </div>
+        <div class="form-group">
+            <input class="form-control" id="person-url" name="url" type="text" placeholder="{% trans 'tag.url' %}">
+        </div>
+        <p class="submit-tag">
+            <button id="submit-tag-person" class="submit-tag-button" type="submit">{% trans 'tag.confirm' %}</button>
+            <button id="cancel-tag-person">{% trans 'tag.cancel' %}</button>
+        </p>
+        <div id="ad-posting-tag-person" class="tag-posting loading-gif-container" style="display: none">
+            <div class="loader rotate">
+                <div class="loading-gif"></div>
+            </div>
+        </div>
+    </div>
+</form>
