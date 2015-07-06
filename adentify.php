@@ -3,7 +3,7 @@
  * Plugin Name: AdEntify
  * Plugin URI: http://wordpress.adentify.com
  * Description: A brief description of the Plugin.
- * Version: 1.0.9
+ * Version: 1.0.10
  * Author: ValYouAd
  * Author URI: http://www.valyouad.com
  * License: GPL2
@@ -49,7 +49,7 @@ define( 'ADENTIFY_API_CLIENT_SECRET_KEY', 'api_client_secret');
 define( 'ADENTIFY_API_ACCESS_TOKEN', 'api_access_token');
 define( 'ADENTIFY_API_REFRESH_TOKEN', 'api_refresh_token');
 define( 'ADENTIFY_API_EXPIRES_TIMESTAMP', 'api_expires_timestamp');
-define( 'PLUGIN_VERSION', '1.0.9');
+define( 'PLUGIN_VERSION', '1.0.10');
 define( 'ADENTIFY_SQL_TABLE_PHOTOS', 'adentify_photos');
 
 require 'vendor/autoload.php';
@@ -117,7 +117,10 @@ function adentify_plugin_settings() {
 	}
 
     if (isset($_GET['code'])) {
-        APIManager::getInstance()->getAccessTokenWithAuthorizationCode($_GET['code']);
+        $success = APIManager::getInstance()->getAccessTokenWithAuthorizationCode($_GET['code']);
+        if (false === $success) {
+            echo '<div class="error">Impossible to get access token from AdEntify API, please contact us on <a href="https://adentify.com/en/contact">adentify.com/en/contact</a></div>';
+        }
     }
 
     $settings = array();
@@ -402,8 +405,7 @@ function ad_tag() {
     $tag = Tag::loadPost($_POST['tag']);
     if (is_array($tag) && array_key_exists('error', $tag)) {
         throw new Exception('tag error');
-    }
-    else if ($result = APIManager::getInstance()->postTag($tag))
+    } else if ($result = APIManager::getInstance()->postTag($tag))
         echo $result->getBody();
     exit();
 }
@@ -419,7 +421,7 @@ function ad_analytics() {
 }
 
 function ad_admin_notice() {
-    if (!APIManager::getInstance()->getAccessToken() && !array_key_exists('code', $_GET))
+    if (!APIManager::getInstance()->isAccesTokenValid() && !array_key_exists('code', $_GET))
         echo Twig::render('admin\notices.html.twig', array(
             'authorization_url' => APIManager::getInstance()->getAuthorizationUrl()
         ));
